@@ -207,6 +207,18 @@ def get_job(id: int):
         }
 
 
+@app.delete("/jobs/{job_id}")
+def delete_job(job_id: int):
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM ats_results WHERE job_id = %s", (job_id,))
+    cur.execute("DELETE FROM jobs WHERE id = %s", (job_id,))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return {"message": "deleted"}
+
+
 @app.post("/ats/analyze")
 def analyze_resume(job_id: int):
     conn = get_conn()

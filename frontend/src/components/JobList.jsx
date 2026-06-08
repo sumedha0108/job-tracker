@@ -14,6 +14,14 @@ const STATUS_STYLES = {
 export default function JobList({ refresh , onStatusChange}) {
   const [jobs, setJobs] = useState([]);
 
+  const handleDelete = async (e, job_id) => {
+    e.stopPropagation();
+    if (!window.confirm('Delete this job and all its data?')) return;
+    await axios.delete(`/api/jobs/${job_id}`);
+    setJobs(jobs.filter(j => j.id !== job_id));
+    onStatusChange();
+  };
+
   useEffect(() => {
     axios.get('/api/jobs')
       .then(res => setJobs(res.data))
@@ -38,7 +46,7 @@ export default function JobList({ refresh , onStatusChange}) {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-white/10 bg-white/[0.03]">
-            {['Company', 'Role', 'Status', 'Salary', 'Resume', 'Links', 'Date'].map(h => (
+            {['Company', 'Role', 'Status', 'Salary', 'Resume', 'Links', 'Date', ''].map(h => (
               <th key={h} className="px-5 py-3.5 text-left text-xs font-medium text-white/30 uppercase tracking-wider">{h}</th>
             ))}
           </tr>
@@ -114,6 +122,15 @@ export default function JobList({ refresh , onStatusChange}) {
                 </td>
                 <td className="px-5 py-4 text-white/30 text-xs">
                   {new Date(job.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                </td>
+                <td className="px-5 py-4" onClick={e => e.stopPropagation()}>
+                  <button
+                    onClick={e => handleDelete(e, job.id)}
+                    className="text-white/20 hover:text-red-400 transition-colors text-base leading-none"
+                    title="Delete job"
+                  >
+                    ✕
+                  </button>
                 </td>
               </tr>
             );
