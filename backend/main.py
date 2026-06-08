@@ -255,6 +255,7 @@ Respond ONLY with a JSON object in this exact format, no extra text:
 {{
   "score": <number 0-100>,
   "summary": "<2-3 sentence overall assessment>",
+  "jd_keywords": ["<every distinct skill, tool, technology, or qualification required by the JD>", ...],
   "strong_matches": ["<skill or experience that matches>", ...],
   "missing_keywords": ["<important keyword/skill missing from resume>", ...],
   "weaknesses": ["<specific weakness or gap>", ...],
