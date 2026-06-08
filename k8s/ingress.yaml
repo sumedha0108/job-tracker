@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jobtracker-ingress
+  name: jobtracker-api-ingress
   namespace: jobtracker
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -19,6 +19,18 @@ spec:
                 name: backend-service
                 port:
                   number: 8000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jobtracker-frontend-ingress
+  namespace: jobtracker
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: jobtracker.local
+      http:
+        paths:
           - path: /
             pathType: Prefix
             backend:
