@@ -12,17 +12,25 @@ A full-stack job application tracker with AI-powered resume analysis and mock in
 
 ## Screenshots
 
+
 **Dashboard & Job List**
 
-![Dashboard](docs/dashboard.png)
+<img width="1440" height="697" alt="home" src="https://github.com/user-attachments/assets/5188df2d-6200-4cc8-b1ed-530471bb9072" />
+
+
 
 **Job Detail & ATS Analyzer**
 
-![Job Detail](docs/job-detail.png)
+<img width="1440" height="813" alt="jd" src="https://github.com/user-attachments/assets/5bf8d4f9-6410-4072-a216-b39baf65710f" />
+
+
+<img width="1440" height="813" alt="analysis" src="https://github.com/user-attachments/assets/ecba7a30-7548-4b73-804e-28d9847601b3" />
+
+
 
 **Mock Interview**
 
-![Mock Interview](docs/interview.png)
+<img width="1440" height="812" alt="interview" src="https://github.com/user-attachments/assets/c5e72d5a-f8da-4003-934f-85af5c0153a0" />
 
 ## Tech Stack
 
